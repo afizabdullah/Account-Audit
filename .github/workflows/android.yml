@@ -20,11 +20,10 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      # استخدام هذه الأداة لتحميل Gradle تلقائياً نظراً لعدم وجود ملف gradlew
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.4 # متوافق مع إصدار AGP 8.1.4 في مشروعك
+          gradle-version: 8.4 
 
       - name: Build Debug APK
         run: gradle assembleDebug --stacktrace
