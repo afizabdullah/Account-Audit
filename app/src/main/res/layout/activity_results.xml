@@ -89,43 +89,54 @@
             android:id="@+id/btnSaveSuccess"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:layout_marginEnd="4dp"
             android:text="حفظ الناجحة"
-            app:cornerRadius="8dp"
-            app:backgroundTint="#00c853" />
+            app:backgroundTint="#00c853"
+            app:cornerRadius="8dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveFailed"
             android:layout_width="0dp"
             android:layout_height="40dp"
+            android:layout_weight="1"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
-            android:layout_weight="1"
             android:text="حفظ الفاشلة"
-            app:cornerRadius="8dp"
-            app:backgroundTint="#ff1744" />
+            app:backgroundTint="#ff1744"
+            app:cornerRadius="8dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCopySuccess"
             android:layout_width="0dp"
             android:layout_height="40dp"
+            android:layout_weight="1"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
+            android:text="نسخ الناجحة"
+            app:backgroundTint="#4488ff"
+            app:cornerRadius="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCopyFailed"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:text="نسخ"
-            app:cornerRadius="8dp"
-            app:backgroundTint="#4488ff" />
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:text="نسخ الفاشلة"
+            app:backgroundTint="#ff4444"
+            app:cornerRadius="8dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRetryFailed"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginStart="4dp"
             android:layout_weight="1"
+            android:layout_marginStart="4dp"
             android:text="إعادة الفاشلة"
-            app:cornerRadius="8dp"
-            app:backgroundTint="#ff9800" />
+            app:backgroundTint="#ff9800"
+            app:cornerRadius="8dp" />
 
     </LinearLayout>
 
