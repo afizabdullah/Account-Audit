@@ -13,18 +13,23 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class ResultsActivity extends AppCompatActivity {
 
     private ListView lvSuccess, lvFailed;
     private MaterialButton btnSaveSuccess, btnSaveFailed, btnCopySuccess, btnCopyFailed, btnRetryFailed;
     private TextView tvSuccessCount, tvFailedCount;
+
     private TabLayout tabLayout;
 
     private ArrayAdapter<String> successAdapter, failedAdapter;
-    private List<String> successResults = new ArrayList<>();
-    private List<String> failedResults = new ArrayList<>();
+
+    private final List<String> successResults = new ArrayList<>();
+    private final List<String> failedResults = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,7 @@ public class ResultsActivity extends AppCompatActivity {
     }
 
     private void initializeViews() {
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -49,7 +55,10 @@ public class ResultsActivity extends AppCompatActivity {
         btnSaveSuccess = findViewById(R.id.btnSaveSuccess);
         btnSaveFailed = findViewById(R.id.btnSaveFailed);
         btnCopySuccess = findViewById(R.id.btnCopySuccess);
+
+        // ✅ هذا هو المهم (كان ناقص في XML عندك)
         btnCopyFailed = findViewById(R.id.btnCopyFailed);
+
         btnRetryFailed = findViewById(R.id.btnRetryFailed);
 
         tvSuccessCount = findViewById(R.id.tvSuccessCount);
@@ -65,13 +74,10 @@ public class ResultsActivity extends AppCompatActivity {
     }
 
     private void loadResults() {
-        successResults.add("test@email.com:password123 - نجاح");
-        failedResults.add("failed@email.com:wrongpass - فشل");
 
-        updateCounts();
-    }
+        successResults.add("test@email.com:password123 - ✅ نجاح");
+        failedResults.add("failed@email.com:wrongpass - ❌ فشل");
 
-    private void updateCounts() {
         tvSuccessCount.setText("النجاح: " + successResults.size());
         tvFailedCount.setText("الفشل: " + failedResults.size());
     }
@@ -104,20 +110,23 @@ public class ResultsActivity extends AppCompatActivity {
     }
 
     private void saveToFile(List<String> results, String type) {
+
         try {
-            String fileName = "Results_" + type + "_" +
+            String fileName = "Madqaq_" + type + "_" +
                     new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date()) + ".txt";
 
             File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
             File file = new File(downloadsDir, fileName);
 
             FileWriter writer = new FileWriter(file);
+
             for (String line : results) {
                 writer.write(line + "\n");
             }
+
             writer.close();
 
-            Toast.makeText(this, "تم الحفظ: " + file.getName(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "تم الحفظ: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
 
         } catch (IOException e) {
             Toast.makeText(this, "خطأ: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -125,7 +134,9 @@ public class ResultsActivity extends AppCompatActivity {
     }
 
     private void copyToClipboard(List<String> results) {
+
         StringBuilder sb = new StringBuilder();
+
         for (String line : results) {
             sb.append(line).append("\n");
         }
@@ -138,12 +149,11 @@ public class ResultsActivity extends AppCompatActivity {
 
         clipboard.setPrimaryClip(clip);
 
-        Toast.makeText(this,
-                "تم نسخ " + results.size() + " عنصر",
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "تم النسخ: " + results.size(), Toast.LENGTH_SHORT).show();
     }
 
     private void retryFailed() {
+
         Intent intent = new Intent(this, MainActivity.class);
         intent.putStringArrayListExtra("retry_list", new ArrayList<>(failedResults));
         startActivity(intent);
