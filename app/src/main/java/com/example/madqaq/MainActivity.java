@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences prefs;
     private OkHttpClient client;
     private List<String> successResults = new ArrayList<>();
-    private List<String> failedResults = new ArrayList<>();
     private int currentLine = 0;
     private int totalLines = 0;
     private StringBuilder logBuilder = new StringBuilder();
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupClickListeners() {
-        // ضع هنا باقي الـ Listeners الخاصة بك
+        btnStart.setOnClickListener(v -> startChecking());
     }
 
     private void setupWebView() {
@@ -112,13 +111,12 @@ public class MainActivity extends AppCompatActivity {
         webViewLog.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
     }
 
-    // --- هذه هي الدالة المعدلة التي تحل مشكلة الانهيار (Crash) ---
+    // هذه هي الدالة المعدلة التي تحل مشكلة الانهيار (Crash)
     private void addLog(final String message, final String type) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 String color = type.equals("success") ? "success" : type.equals("failed") ? "failed" : "info";
-                
                 logBuilder.append("<div class='log-line ").append(color).append("'>")
                         .append(getCurrentTime()).append(" - ").append(message).append("</div>");
                 
@@ -135,5 +133,7 @@ public class MainActivity extends AppCompatActivity {
         return new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
     }
 
-    // ... (بقية الدوال الخاصة بك: startChecking, processLine, إلخ) ...
+    private void startChecking() {
+        // يمكنك هنا استدعاء العمليات الخاصة بك
+    }
 }
