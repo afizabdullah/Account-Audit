@@ -18,19 +18,12 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#16213e"
-        app:tabIndicatorColor="#00ff00"
-        app:tabSelectedTextColor="#00ff00"
-        app:tabTextColor="#888888">
+        android:background="#16213e">
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="الناجحة" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="الفاشلة" />
 
     </com.google.android.material.tabs.TabLayout>
@@ -48,7 +41,6 @@
             android:layout_weight="1"
             android:text="النجاح: 0"
             android:textColor="#00ff00"
-            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
@@ -58,7 +50,6 @@
             android:layout_weight="1"
             android:text="الفشل: 0"
             android:textColor="#ff4444"
-            android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -67,76 +58,56 @@
         android:id="@+id/lvSuccess"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#1a1a2e"
-        android:visibility="visible" />
+        android:layout_weight="1" />
 
     <ListView
         android:id="@+id/lvFailed"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#1a1a2e"
         android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="10dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveSuccess"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginEnd="4dp"
-            android:text="حفظ الناجحة"
-            app:backgroundTint="#00c853"
-            app:cornerRadius="8dp" />
+            android:text="حفظ الناجحة" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveFailed"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:text="حفظ الفاشلة"
-            app:backgroundTint="#ff1744"
-            app:cornerRadius="8dp" />
+            android:text="حفظ الفاشلة" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCopySuccess"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:text="نسخ الناجحة"
-            app:backgroundTint="#4488ff"
-            app:cornerRadius="8dp" />
+            android:text="نسخ الناجحة" />
 
+        <!-- ✅ هذا الزر المفقود الذي سبب الخطأ -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCopyFailed"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:text="نسخ الفاشلة"
-            app:backgroundTint="#ff4444"
-            app:cornerRadius="8dp" />
+            android:text="نسخ الفاشلة" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRetryFailed"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginStart="4dp"
-            android:text="إعادة الفاشلة"
-            app:backgroundTint="#ff9800"
-            app:cornerRadius="8dp" />
+            android:text="إعادة" />
 
     </LinearLayout>
 
